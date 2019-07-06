@@ -2,7 +2,6 @@ package com.wills.bill.springbootbill.controller;
 
 import com.wills.bill.springbootbill.bean.Bill;
 import com.wills.bill.springbootbill.bean.Provider;
-import com.wills.bill.springbootbill.dao.BillDao;
 import com.wills.bill.springbootbill.service.BillService;
 import com.wills.bill.springbootbill.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
