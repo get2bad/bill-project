@@ -1,14 +1,13 @@
 package com.wills.bill.springbootbill.service;
 
+import com.wills.bill.springbootbill.bean.Bill;
 import com.wills.bill.springbootbill.bean.Provider;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
-public interface ProviderService extends JpaRepository<Provider,Integer> {
+public interface ProviderService {
     /*
     @Modifying
     @Transactional
@@ -20,4 +19,14 @@ public interface ProviderService extends JpaRepository<Provider,Integer> {
             "where hy.uid = :#{#huaYangArea.uid}")
     int update(@Param("provider") Provider  provider);
     */
+
+    public Provider findById(Integer pid);
+
+    public List<Provider> findAll();
+
+    public void updateBillById(Provider provider);
+
+    public void save(Provider provider);
+
+    public void deleteById(Integer pid);
 }

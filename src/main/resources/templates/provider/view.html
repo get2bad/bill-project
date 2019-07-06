@@ -24,13 +24,13 @@
             <p><strong>联系人：</strong><span th:text="${p.people}">韩露</span></p>
             <p><strong>联系电话：</strong><span th:text="${p.phone}">15918230478</span></p>
             <p><strong>传真：</strong><span th:text="${p.fax}">15918230478</span></p>
-            <p><strong>描述：</strong><span th:text="${p.describe}">描述</span></p>
+            <p><strong>描述：</strong><span th:text="${p.describes}">描述</span></p>
 
             <a th:href="@{/providers}">返回</a>
         </div>
     </div>
 </section>
-<footer class="footer"><div style="text-align:center;">	<p><a href="http://www.mengxuegu.com/" target="_blank">梦学谷 www.mengxuegu.com</a> 版权所有</p></div></footer>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
 <!--
 	<script src="js/time.js"></script>
 	-->

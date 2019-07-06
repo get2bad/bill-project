@@ -33,6 +33,10 @@ public class Bill {
     private Provider provider;
     //供应商id
     private Integer pid;
+    // 是否付款 0 未付款， 1已付款
+    private Integer pay;
+    // 创建时间
+    private Date createDate;
 
     public Integer getPid() {
         return pid;
@@ -42,10 +46,6 @@ public class Bill {
         this.pid = pid;
     }
 
-    // 是否付款 0 未付款， 1已付款
-    private Integer pay;
-    // 创建时间
-    private Date createDate;
     public Bill() {}
 
     public Bill(Integer bid, String billCode, String billName, String billCom, Integer billNum, Double money, Provider provider, Integer pay) {
@@ -58,22 +58,6 @@ public class Bill {
         this.provider = provider;
         this.pay = pay;
         this.createDate = new Date();
-    }
-
-
-    @Override
-    public String toString() {
-        return "Bill{" +
-                "bid=" + bid +
-                ", billCode='" + billCode + '\'' +
-                ", billName='" + billName + '\'' +
-                ", billCom='" + billCom + '\'' +
-                ", billNum=" + billNum +
-                ", money=" + money +
-                ", provider=" + provider +
-                ", pay=" + pay +
-                ", createDate=" + createDate +
-                '}';
     }
 
     public Integer getBid() {
@@ -146,5 +130,21 @@ public class Bill {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "bid=" + bid +
+                ", billCode='" + billCode + '\'' +
+                ", billName='" + billName + '\'' +
+                ", billCom='" + billCom + '\'' +
+                ", billNum=" + billNum +
+                ", money=" + money +
+                ", provider=" + provider +
+                ", pid=" + pid +
+                ", pay=" + pay +
+                ", createDate=" + createDate +
+                '}';
     }
 }

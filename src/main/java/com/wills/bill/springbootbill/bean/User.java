@@ -3,6 +3,7 @@ package com.wills.bill.springbootbill.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,8 +34,8 @@ public class User {
     private Integer gender;
     //生日
     @Column(name="birthday")
-    @CreatedDate
-    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss")
+    //@CreatedDate
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     //1管理员  2经理  3普通用户
     @Column(name="userType")
@@ -43,7 +44,8 @@ public class User {
     public User() {
     }
 
-    public User(String username,String password) {
+    public User(Integer id,String username,String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
     }

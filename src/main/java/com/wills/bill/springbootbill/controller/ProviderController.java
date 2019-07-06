@@ -34,7 +34,7 @@ public class ProviderController {
 
     @GetMapping("/provider/{pid}")
     public String getProviderById(@PathVariable("pid")Integer pid,HttpServletRequest request){
-        Provider p = providerService.findById(pid).get();
+        Provider p = providerService.findById(pid);
         if(p!=null){
             request.setAttribute("p",p);
             return "provider/view";
@@ -44,7 +44,7 @@ public class ProviderController {
 
     @GetMapping("/provider/update/{pid}")
     public String updateProvide(@PathVariable("pid")Integer pid,HttpServletRequest request){
-        Provider p = providerService.findById(pid).get();
+        Provider p = providerService.findById(pid);
         if(p!=null){
             request.setAttribute("p",p);
             return "provider/update";
@@ -55,7 +55,7 @@ public class ProviderController {
     @PostMapping("/provider/updateP/{pid}")
     public String updateProvider(@PathVariable("pid")Integer pid,Provider provider){
         provider.setCreateDate(new Date());
-        providerService.saveAndFlush(provider);
+        providerService.save(provider);
         return "redirect:/providerList";
     }
 

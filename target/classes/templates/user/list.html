@@ -22,7 +22,7 @@
                 <span>用户名：</span>
                 <input type="text" placeholder="请输入用户名"/>
                 <input type="button" value="查询"/>
-                <a href="add.html">添加用户</a>
+                <a th:href="@{/user/add}">添加用户</a>
             </div>
             <!--用户-->
             <table class="providerTable" cellpadding="0" cellspacing="0">
@@ -34,28 +34,19 @@
                     <th width="10%">用户类型</th>
                     <th width="30%">操作</th>
                 </tr>
-                <tr>
-                    <td>hanlu</td>
-                    <td>韩露</td>
-                    <td>女</td>
-                    <td>1989/10/10</td>
-                    <td>经理</td>
+                <tr th:each="u : ${users}">
+                    <td th:text="${u.username}">hanlu</td>
+                    <td th:text="${u.realName}">韩露</td>
+                    <td th:if="${u.gender} ==1">女</td>
+                    <td th:if="${u.gender} ==2">男</td>
+                    <td th:text="${#dates.format(u.birthday,'yyyy-MM-dd')}">1989/10/10</td>
+                    <td th:if="${u.userType} ==1">管理员</td>
+                    <td th:if="${u.userType} ==2">经理</td>
+                    <td th:if="${u.userType} ==3">普通用户</td>
                     <td>
-                        <a href="view.html"><img src="../img/read.png" alt="查看" title="查看"/></a>
-                        <a href="update.html"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="delete"><img src="../img/schu.png" alt="删除" title="删除"/></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PRO-CODE—001</td>
-                    <td>测试供应商001</td>
-                    <td>男</td>
-                    <td>1989/10/10</td>
-                    <td>管理员</td>
-                    <td>
-                        <a href="view.html"><img src="../img/read.png" alt="查看" title="查看"/></a>
-                        <a href="update.html"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="delete" ><img src="../img/schu.png" alt="删除" title="删除"/></a>
+                        <a th:href="@{/user/view/1/}+${u.id}"><img src="../img/read.png" alt="查看" title="查看"/></a>
+                        <a th:href="@{/user/view/2/}+${u.id}"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a th:href="@{/user/delete/}+${u.id}" class="delete"><img src="../img/schu.png" alt="删除" title="删除"/></a>
                     </td>
                 </tr>
             </table>
@@ -79,7 +70,7 @@
 		</div>
 	</form>
 
-<footer class="footer"><div style="text-align:center;">	<p><a href="http://www.mengxuegu.com/" target="_blank">梦学谷 www.mengxuegu.com</a> 版权所有</p></div></footer>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
 
 <script src="../js/jquery.js"></script>
 <script src="../js/js.js"></script>

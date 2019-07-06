@@ -38,7 +38,7 @@
                 </select>
 
                 <input type="button" value="查询"/>
-                <a href="../bill/add.html">添加帐单</a>
+                <a th:href="@{bill/insert}">添加帐单</a>
             </div>
 			</form>
             <!--账单表格 样式和供应商公用-->
@@ -52,30 +52,18 @@
                     <th width="10%">创建时间</th>
                     <th width="30%">操作</th>
                 </tr>
-                <tr>
-                    <td>PRO-CODE—001</td>
-                    <td>测试供应商001</td>
-                    <td>北京市粮油总公司</td>
-                    <td>22.00</td>
-                    <td>未付款</td>
-                    <td>2015-11-12</td>
+                <tr th:each="b : ${allBill}">
+                    <td th:text="${b.billCode}">PRO-CODE—001</td>
+                    <td th:text="${b.billName}">测试供应商001</td>
+                    <td th:text="${b.billCom}">北京市粮油总公司</td>
+                    <td th:text="${b.money}">22.00</td>
+                    <td th:if="${b.pay}==0">未付款</td>
+                    <td th:if="${b.pay}==1">已付款</td>
+                    <td th:text="${#dates.format(b.createDate,'yyyy-MM-dd')}">2015-11-12</td>
                     <td>
-                        <a href="view.html"><img src="../img/read.png" alt="查看" title="查看"/></a>
-                        <a href="update.html"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="delete"><img src="../img/schu.png" alt="删除" title="删除"/></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>PRO-CODE—002</td>
-                    <td>测试供应商002</td>
-                    <td>北京市粮油总公司</td>
-                    <td>22.00</td>
-                    <td>未付款</td>
-                    <td>2015-11-12</td>
-                    <td>
-                        <a href="view.html"><img src="../img/read.png" alt="查看" title="查看"/></a>
-                        <a href="update.html"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
-                        <a href="#" class="delete"><img src="../img/schu.png" alt="删除" title="删除"/></a>
+                        <a th:href="@{bill/view/2/}+${b.bid}"><img src="../img/read.png" alt="查看" title="查看"/></a>
+                        <a th:href="@{bill/view/1/}+${b.bid}"><img src="../img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a th:href="@{bill/delete/}+${b.bid}" class="delete"><img src="../img/schu.png" alt="删除" title="删除"/></a>
                     </td>
                 </tr>
             </table>
@@ -97,9 +85,8 @@
 		   </div>
 		</div>
 	</form>
-	
-	<footer class="footer"><div style="text-align:center;">	<p><a href="http://www.mengxuegu.com/" target="_blank">梦学谷 www.mengxuegu.com</a> 版权所有</p></div></footer>
 
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/js.js"></script>
 <!--

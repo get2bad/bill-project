@@ -19,11 +19,22 @@
             <span>用户管理页面 >> 用户修改页面</span>
         </div>
         <div class="providerAdd">
-            <form action="#">
+            <form th:action="@{/user/update/1}" th:method="post">
+                <input th:type="hidden" name="id" th:value="${user.id}" />
                 <!--div的class 为error是验证错误，ok是验证成功-->
                 <div>
+                    <label for="realName">用户名：</label>
+                    <input type="text" name="username" id="username" th:value="${user.username}"/>
+                    <span >*</span>
+                </div>
+                <div>
+                    <label for="realName">密码：</label>
+                    <input type="text" name="password" id="password" th:value="${user.password}"/>
+                    <span >*</span>
+                </div>
+                <div>
                     <label for="realName">真实姓名：</label>
-                    <input type="text" name="realName" id="realName" placeholder="韩露"/>
+                    <input type="text" name="realName" id="realName" th:value="${user.realName}"/>
                     <span >*</span>
                 </div>
 
@@ -31,25 +42,23 @@
                     <label >用户性别：</label>
 
                     <select name="gender">
-                        <option value="1">女</option>
-                        <option value="2" selected>男</option>
+                        <option value="1" th:selected="${user.gender}==1">女</option>
+                        <option value="2" th:selected="${user.gender}==2">男</option>
                     </select>
                 </div>
                 <div>
                     <label for="birthday">出生日期：</label>
-                    <input type="text" name="birthday" id="birthday" placeholder="2016年2月1日"/>
+                    <input type="text" name="birthday" id="birthday" th:value="${#dates.format(user.birthday,'yyyy-MM-dd')}"/>
                     <span >*</span>
                 </div>
                 <div>
                     <label >用户类别：</label>
-                    <input type="radio" name="userType" value="1" />管理员
-                    <input type="radio" name="userType" value="2" checked/>经理
-                    <input type="radio" name="userType" value="3"/>普通用户
+                    <input type="radio" name="userType" value="1" th:checked="${user.userType}==1"/>管理员
+                    <input type="radio" name="userType" value="2" th:checked="${user.userType}==2"/>经理
+                    <input type="radio" name="userType" value="3" th:checked="${user.userType}==3"/>普通用户
                 </div>
                 <div class="providerAddBtn">
-                    <!--<a href="#">保存</a>-->
-                    <!--<a href="userList.html">返回</a>-->
-                    <input type="button" value="保存" onclick="history.back(-1)"/>
+                    <input type="submit" value="保存"/>
                     <input type="button" value="返回" onclick="history.back(-1)"/>
                 </div>
             </form>
@@ -57,7 +66,7 @@
 
     </div>
 </section>
-<footer class="footer"><div style="text-align:center;">	<p><a href="http://www.mengxuegu.com/" target="_blank">梦学谷 www.mengxuegu.com</a> 版权所有</p></div></footer>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
 <!--
 	<script src="js/time.js"></script>
 	-->

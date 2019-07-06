@@ -57,7 +57,7 @@
                 </div>
                 <div>
                     <label for="describe">描述：</label>
-                    <input type="text" name="describe" id="describe" th:value="${p.describe}" placeholder="描述"/>
+                    <input type="text" name="describe" id="describe" th:value="${p.describes}" placeholder="描述"/>
                     <span></span>
 
                 </div>
@@ -72,7 +72,7 @@
 
     </div>
 </section>
-<footer class="footer"><div style="text-align:center;">	<p><a href="http://www.mengxuegu.com/" target="_blank">梦学谷 www.mengxuegu.com</a> 版权所有</p></div></footer>
+<footer class="footer" th:replace="main/public :: #public_footer"></footer>
 <script src="../js/jquery.js"></script>
 <!--
 	<script src="js/time.js"></script>
