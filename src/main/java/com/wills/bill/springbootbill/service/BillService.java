@@ -1,7 +1,6 @@
 package com.wills.bill.springbootbill.service;
 
 import com.wills.bill.springbootbill.bean.Bill;
-import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 

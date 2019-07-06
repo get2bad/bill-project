@@ -1,9 +1,6 @@
 package com.wills.bill.springbootbill.service;
 
-import com.wills.bill.springbootbill.bean.Bill;
 import com.wills.bill.springbootbill.bean.Provider;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
